@@ -1,0 +1,188 @@
+<html>
+<head>
+<title>Registration Form</title>
+
+<script>
+function func_validate_form()
+{
+    var first_name = document.getElementById("firstname").value;
+    if(first_name == '')
+    {
+        alert("Pls enter First name");
+	document.getElementById("firstname").focus();
+        return false;
+    }
+
+    var last_name = document.getElementById("lastname").value;
+    if(last_name == '')
+    {
+        alert("Pls enter Last name");
+        document.getElementById("lastname").focus();
+        return false;
+    }
+    var email = document.getElementById("email").value;
+    if(email == '')
+    {
+        alert("Pls enter email");
+	document.getElementById("email").focus();
+        return false;
+    }
+    var email = document.getElementById("email").value;
+
+    var is_valid_email = validateEmail(email);
+    if(is_valid_email != true)
+    {
+        alert("Invalid email");
+        return false;
+    }
+    
+    var age = document.getElementById("age").value;
+    if(age == '')
+    {
+        alert("Pls enter age");
+        document.getElementById("age").focus();
+        return false;
+    }
+    if(document.getElementById("male").checked == false && document.getElementById("female").checked  == false && document.getElementById("others").checked  == false)
+    {
+    alert ( "Please choose your Gender" );
+    return false;
+    }
+
+    var phone = document.getElementById("phone").value;
+    if(phone == '')
+    {
+        alert("Pls enter phone");
+	document.getElementById("phone").focus();	
+        return false;
+    }
+
+    var address = document.getElementById("address").value;
+    if(address == '')
+    {
+        alert("Pls enter address");
+	document.getElementById("address").focus();
+        return false;
+    }
+    var state = document.getElementById("state").value;
+    if(state == 'select')
+    {
+        alert("Pls select state");
+        return false;
+    }
+    if(document.getElementById("cricket").checked == false && document.getElementById("chess").checked == false && document.getElementById("football").checked == false && document.getElementById("other").checked == false)
+    {
+        alert("Pls select hobbies");
+        return false;
+    }
+
+    if(document.getElementById("other").checked == true && document.getElementById("hobbies").value=="")
+    {
+        alert("fill the hobbies textbox");
+	document.getElementById("other").focus();
+        return(false);
+    }
+    
+
+
+    return true;
+}
+
+function validateEmail(inputtext)
+    {
+    var emailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if(inputtext.match(emailformat))
+    {
+        return true;
+    }
+    else
+    {
+          return false;
+    }
+    }
+</script>
+</head>
+<body>
+    <body background="D:\student.jpg" style="background-repeat:round" size=cover height=100%>
+<center>
+<h1><b><font color="red">Student Registration form</font> </b></h1>
+<br>
+<br>
+<form action="savestudent.php" method="POST" name="student_form" onsubmit="return func_validate_form()">
+<table border="2" bgcolor="skyblue">
+<tbody>
+    <tr>
+        <td rowspan="2" width="10" lenght="5">
+Frist Name:
+<input type="text" name="firstname" size="50" id="firstname" value=""><br>
+</td>
+</tr>
+<tr>
+    <td  colspan="2" width="10" lenght="5">
+Last Name:
+<input type="text" name="lastname" id="lastname" value=""><br>
+</td>
+</tr>
+<tr>
+    <td rowspan="2">
+Email:
+<input type="text" name="email" size="40" id="email" value=""><br>
+    </td>
+    </tr>
+<tr>
+    <td colspan="2">
+Age:
+<input type="number" name="age" id="age" min="18" max="60"><br>
+</td>
+</tr>
+<tr>
+        <td rowspan="2">
+Gender:
+<input type="radio" name="gender" id="male" value="m">Male
+<input type="radio" name="gender" id="female" value="f">Female
+<input type="radio" name="gender" id="others" value="o">Others<br>
+</td>
+</tr>
+<tr>
+        <td colspan="2">
+Phone:
+<input type="number" name="phone" id="phone" value=""><br>
+</td>
+</tr>
+<tr>
+        <td rowspan="2">
+Address:
+<input type="text" name="address" size="60" id="address" value=""><br>
+</td>
+</tr>
+<tr>
+        <td colspan="2">
+State:
+<select input type="select" name="state" id="state" >
+<option value="select">Select</option>
+<option value="ap">Andhra pradesh</option>
+<option value="ts">Telangana</option>
+<option value="ka">Karnataka</option>
+<option value="Tn">Tamilnadu</option>
+<option value="kl">Kerala</option>
+</select><br>
+</td>
+</tr>
+<tr>
+        <td colspan="2">
+Hobbies:
+<input type="checkbox" name="hobbies[0]" id="cricket" value="cr">Cricket
+<input type="checkbox" name="hobbies[1]" id="chess" value="ch">Chess
+<input type="checkbox" name="hobbies[2]" id="football" value="fb">Football
+<input type="checkbox" name="hobbies[3] " id="other" value="o">Other
+<input type="text" name="hobbies_other" id="other" value=""><br>
+<br>
+</td>
+</tr>
+</table>
+<input type="submit" value="Submit">
+<input type="reset"  value="Reset">
+</center>
+</form>
+</body>
+</html>

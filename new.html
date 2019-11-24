@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>APPLICATION</title>
+<script>
+function func_validate_login()
+{
+    var loginid = document.getElementById("loginid").value;
+    if(loginid == '')
+    {
+        alert("Pls enter id");
+	document.getElementById("loginid").focus();
+        return false;
+    }  
+    var is_valid_login = validateLogin(loginid);
+    if(is_valid_login != true)
+    {
+        alert("Invalid loginid");
+        return false;
+    }
+    var password = document.getElementById("password").value;
+    if(password == '')
+    {
+        alert("Pls enter password");
+	document.getElementById("password").focus();
+        return false;
+    }
+    return true; 
+}
+
+
+function validateLogin(inputtext)
+    {
+    var loginformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if(inputtext.match(loginformat))
+    {
+        return true;
+    }
+    else
+    {
+          return false;
+        
+    }
+    }
+</script>
+</head>
+<body>
+<center>
+    <h1><b>Aplication</b></h1>
+<form action="application.php" method="post" name="application" onsubmit="return func_validate_login()">
+    <table border="2" bgcolor="skyblue"> 
+        <tr>
+            <td colsapn="2">
+Login ID:
+<input type="text" name="loginid" id="loginid" value=""><BR>
+</td>
+</tr>
+<tr>
+        <td colsapn="2">
+Password:
+<input type="text" name="password" id="password" value=""><BR>
+</td>
+</tr>
+</table>
+    <BR>
+<button type="submit" class="submitbtn">Login</button>
+<a href="project.html">Register</a>
+</form>
+</center>
+</body>
+</html>
